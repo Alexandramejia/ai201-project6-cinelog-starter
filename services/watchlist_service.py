@@ -20,7 +20,7 @@ def add_to_watchlist(user_id, film_id):
 
     Args:
         user_id (str): UUID of the user.
-        film_id (int): ID of the film. (Note: integer — pre-refactor)
+        film_id (str): UUID of the film.
 
     Returns:
         WatchlistEntry: The newly created entry.
@@ -49,7 +49,7 @@ def add_to_watchlist(user_id, film_id):
 
 def get_watchlist(user_id):
     """
-    Return all films on a user's watchlist.
+    Return all films on a user's watchlist, sorted by date added (newest first).
 
     Args:
         user_id (str): UUID of the user.
@@ -61,7 +61,7 @@ def get_watchlist(user_id):
         WatchlistEntry.query
         .filter_by(user_id=user_id)
         .join(Film)
-        .order_by(Film.title.asc())
+        .order_by(WatchlistEntry.date_added.desc())
         .all()
     )
 
