@@ -58,6 +58,8 @@ Merged the `.gitignore` lines, changed `film_id` to match `Film.id`'s UUID type,
 **How I verified no conflict remains:**
 Ran the full test suite (5 passed). Since the existing watchlist test only covers the "film not found" case, I also manually ran through the actual save/fetch path with a real UUID to make sure the fix held. Checked `git log --merges` against main and got nothing back, confirming the rebase didn't leave any merge commits.
 
+![Clean commit log after rebase, one logical change per commit, branching off origin/main](docs-watchlist-commit-log.png)
+
 ## PR Description
 
 ### What this adds
